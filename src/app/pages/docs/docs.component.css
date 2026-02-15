@@ -11,8 +11,10 @@
   padding-bottom: 60px;
   line-height: 1.8;
   font-size: 18px;
-  /* ⭐ base reading size */
   animation: fadeIn 0.25s ease-in;
+
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 /* ===== Headings ===== */
@@ -77,6 +79,7 @@
   overflow-x: auto;
   border: 1px solid #1e293b;
   margin: 20px 0;
+  max-width: 100%;
 }
 
 .docs-container code {
@@ -138,6 +141,14 @@
   gap: 40px;
 }
 
+@media (max-width: 900px) {
+  .docs-layout {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+
 /* right toc */
 
 .toc {
@@ -147,6 +158,14 @@
   height: fit-content;
   font-size: 14px;
 }
+
+/* ===== MOBILE: hide right TOC ===== */
+@media (max-width: 900px) {
+  .toc {
+    display: none;
+  }
+}
+
 
 .toc h4 {
   color: #94a3b8;
@@ -169,4 +188,12 @@
   font-weight: 600;
   border-left: 2px solid #60a5fa;
   padding-left: 8px;
+}
+
+/* ===== MOBILE READING IMPROVEMENT ===== */
+@media (max-width: 900px) {
+  .docs-container {
+    font-size: 17px;
+    padding: 0 6px;
+  }
 }
