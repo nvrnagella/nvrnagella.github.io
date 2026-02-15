@@ -1,36 +1,29 @@
-# DAY 01 – CHARACTER FREQUENCY IN A STRING (C#)
-
----
-
 ## Day 1 Logic
 
 ### 🧠 **“Count character frequency in a string”**
 
 > **Why this logic?**
-> 
-> 
 > This single problem quietly teaches you:
-> 
-- loops
-- conditions
-- dictionaries (real-world data handling)
-- debugging step-by-step
-- thinking like a backend developer
+
+* loops
+* conditions
+* dictionaries (real-world data handling)
+* debugging step-by-step
+* thinking like a backend developer
 
 This logic appears in:
 
-- search engines
-- log analysis
-- text processing
-- interview questions
-- backend validation
+* search engines
+* log analysis
+* text processing
+* interview questions
+* backend validation
 
 ---
 
 ## Tools
 
 You can use **Visual Studio 2022** or **VS Code**.
-
 I’ll assume **Visual Studio 2022 (Console App)** — if you want VS Code later, we’ll switch.
 
 ---
@@ -39,15 +32,15 @@ I’ll assume **Visual Studio 2022 (Console App)** — if you want VS Code later
 
 **Input:**
 
-```
+```text
 "banana"
 ```
 
 **Output:**
 
-```
-b → 1
-a → 3
+```text
+b → 1  
+a → 3  
 n → 2
 ```
 
@@ -102,7 +95,6 @@ class Program
 ```
 
 Run it ▶️
-
 You should see:
 
 ```
@@ -125,18 +117,19 @@ Now **don’t just run** — **debug like a pro**.
 foreach (char ch in input)
 ```
 
-1. Press **F5** (Debug)
-2. Use:
-    - **F10** → Step Over
-    - **Watch window**
-    - Hover on variables
+2. Press **F5** (Debug)
+3. Use:
+
+   * **F10** → Step Over
+   * **Watch window**
+   * Hover on variables
 
 ### Observe Carefully:
 
-- First loop → `ch = 'b'`
-- Dictionary becomes → `{ b:1 }`
-- Next → `ch = 'a'`
-- Dictionary → `{ b:1, a:1 }`
+* First loop → `ch = 'b'`
+* Dictionary becomes → `{ b:1 }`
+* Next → `ch = 'a'`
+* Dictionary → `{ b:1, a:1 }`
 
 💡 This is how you *see logic working*, not just believe it.
 
@@ -163,7 +156,6 @@ Run it again.
 **Question to you (important):**
 
 > Why is the count wrong?
-> 
 
 This is how debugging skills grow.
 
@@ -198,12 +190,23 @@ d → 1
 
 ## What You Learned Today (Without Realizing 😉)
 
-| Concept | You actually learned |
-| --- | --- |
-| Loop | foreach |
-| Condition | if / else |
-| Data Structure | Dictionary |
-| Debugging | Breakpoints, stepping |
-| Thinking | Problem → logic → code |
+| Concept        | You actually learned   |
+| -------------- | ---------------------- |
+| Loop           | foreach                |
+| Condition      | if / else              |
+| Data Structure | Dictionary             |
+| Debugging      | Breakpoints, stepping  |
+| Thinking       | Problem → logic → code |
+
+---
+
+## Tomorrow’s Lesson (Day 2 – Preview 🚀)
+
+I’ll teach you **“Find first non-repeating character”**
+This will level up:
+
+* nested logic
+* performance thinking
+* interview confidence
 
 ---
