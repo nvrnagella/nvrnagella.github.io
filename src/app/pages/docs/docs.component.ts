@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MarkdownModule } from 'ngx-markdown';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-docs',
@@ -17,21 +18,43 @@ export class DocsComponent implements OnInit {
   notFound = false;
   activeSection = '';
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
+
     this.route.paramMap.subscribe(params => {
 
       const section = params.get('section');
       const page = params.get('page');
 
-      this.notFound = false;
-      this.mdPath = `/docs/${section}/${page}.md`;
+      const path = `/docs/${section}/${page}.md`;
 
-      // ⭐ Always start page from top
+      // reset state first
+      this.notFound = false;
+      this.mdPath = '';
+      this.toc = [];
+
+      // check file existence
+      this.http.get(path, { responseType: 'text' }).subscribe({
+
+        next: () => {
+          // file exists → render markdown
+          this.mdPath = path;
+        },
+
+        error: () => {
+          // file missing → show not found
+          this.notFound = true;
+        }
+
+      });
+
+      // always scroll to top
       window.scrollTo({ top: 0, behavior: 'instant' });
+
     });
   }
+
 
 
 
