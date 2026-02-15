@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DailyLogicComponent } from './daily-logic.component';
+import { DocsComponent } from './docs.component';
 
-describe('DailyLogicComponent', () => {
-  let component: DailyLogicComponent;
-  let fixture: ComponentFixture<DailyLogicComponent>;
+describe('DocsComponent', () => {
+  let component: DocsComponent;
+  let fixture: ComponentFixture<DocsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DailyLogicComponent]
+      imports: [DocsComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DailyLogicComponent);
+    fixture = TestBed.createComponent(DocsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

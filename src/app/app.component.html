@@ -1,20 +1,25 @@
-<div style="display:flex;height:100vh;font-family:Arial">
+<div class="layout">
 
-  <aside style="width:240px;background:#0f172a;color:white;padding:16px">
-    <h3>Learning Docs</h3>
+  <aside class="sidebar">
 
-    <ul style="list-style:none;padding:0;margin-top:20px">
-      <li>
-        <a routerLink="/daily-logic" routerLinkActive="active-link"
-          style="color:white;text-decoration:none;display:block;padding:8px;border-radius:6px">
-          Daily Logic
-        </a>
+    <h3 class="logo">Learning Docs</h3>
 
-      </li>
-    </ul>
+    <div *ngFor="let group of docs" class="menu-group">
+
+      <h4>{{ group.title }}</h4>
+
+      <a
+        *ngFor="let page of group.pages"
+        [routerLink]="['/docs', group.section, page.slug]"
+        routerLinkActive="active">
+        {{ page.title }}
+      </a>
+
+    </div>
+
   </aside>
 
-  <main style="flex:1;padding:24px;overflow:auto">
+  <main class="content">
     <router-outlet></router-outlet>
   </main>
 
