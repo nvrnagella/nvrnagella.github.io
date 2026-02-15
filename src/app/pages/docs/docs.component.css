@@ -9,7 +9,6 @@
 .docs-container markdown {
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
 }
 
 
@@ -91,6 +90,7 @@
   margin: 20px 0;
   max-width: 100%;
   white-space: pre;
+  overflow-x: auto;
 }
 
 .docs-container code {
@@ -230,4 +230,9 @@
     padding: 0 8px;
   }
 
+}
+
+html,
+body {
+  overflow-x: hidden;
 }
