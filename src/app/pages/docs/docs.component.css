@@ -85,13 +85,16 @@
   background: #020617;
   padding: 18px;
   border-radius: 12px;
-  overflow-x: auto;
   border: 1px solid #1e293b;
   margin: 20px 0;
+
+  display: block;
   max-width: 100%;
+
   white-space: pre;
   overflow-x: auto;
 }
+
 
 .docs-container code {
   color: #38bdf8;
@@ -135,12 +138,6 @@
   background: #020617;
 }
 
-/* prevent any markdown element breaking layout */
-.docs-container * {
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
 
 /* ===== Smooth Page Appearance ===== */
 
@@ -162,6 +159,11 @@
   gap: 40px;
 }
 
+.docs-container {
+  min-width: 0;
+}
+
+
 @media (max-width: 900px) {
   .docs-layout {
     flex-direction: column;
@@ -179,6 +181,11 @@
   height: fit-content;
   font-size: 14px;
 }
+
+.toc {
+  flex-shrink: 0;
+}
+
 
 /* ===== MOBILE: hide right TOC ===== */
 @media (max-width: 900px) {
