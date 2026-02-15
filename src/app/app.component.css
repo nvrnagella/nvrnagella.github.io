@@ -7,10 +7,12 @@
 
 .sidebar {
   width: 270px;
-  background: linear-gradient(180deg,#020617,#0f172a);
+  background: linear-gradient(180deg, #020617, #0f172a);
   padding: 20px;
   overflow-y: auto;
   border-right: 1px solid #1e293b;
+  z-index: 1000;
+  /* ⭐ ADD THIS */
 }
 
 .logo {
@@ -72,4 +74,86 @@
 
 .group-title span.rotated {
   transform: rotate(90deg);
+}
+
+
+.mobile-header {
+  display: none;
+  height: 56px;
+  align-items: center;
+  padding: 0 16px;
+  background: #020617;
+  border-bottom: 1px solid #1e293b;
+}
+
+.mobile-header button {
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: white;
+  margin-right: 12px;
+}
+
+@media (max-width: 900px) {
+
+  .layout {
+    flex-direction: column;
+  }
+
+  .mobile-header {
+    display: flex;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: -280px;
+    top: 56px;
+    height: calc(100vh - 56px);
+    z-index: 1000;
+    transition: left 0.25s ease;
+    will-change: left;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .content {
+    padding: 20px;
+  }
+}
+
+/* ===== MOBILE BACKDROP ===== */
+
+.backdrop {
+  position: fixed;
+  top: 56px;
+  /* below mobile header */
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 56px);
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+}
+
+
+/* ===== HOME LINK ===== */
+
+.home-link {
+  display: block;
+  margin-bottom: 14px;
+  padding: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #e2e8f0;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.home-link:hover {
+  background: #1e293b;
+}
+
+body.menu-open {
+  overflow: hidden;
 }

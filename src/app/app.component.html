@@ -1,26 +1,50 @@
-<div class="layout">
+<!-- ===== MOBILE HEADER (visible only on small screens) ===== -->
+<header class="mobile-header">
+  <button (click)="toggleSidebar()">☰</button>
+  <span>Knowledge Hub</span>
+</header>
 
-  <aside class="sidebar">
+<!-- ===== BACKDROP OVERLAY ===== -->
+<div class="backdrop" *ngIf="sidebarOpen" (click)="toggleSidebar()">
+</div>
 
-    <h3 class="logo">Learning Docs</h3>
+<!-- ===== MAIN LAYOUT ===== -->
+<div class="layout" (touchstart)="onTouchStart($event)" (touchmove)="onTouchMove($event)" (touchend)="onTouchEnd()">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" [class.open]="sidebarOpen">
+
+    <h3 class="logo" routerLink="/" (click)="sidebarOpen=false">
+
+      Learning Docs
+
+    </h3>
+
+
+    <!-- ===== HOME LINK ===== -->
+    <a class="home-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+      (click)="sidebarOpen=false">
+
+      🏠 Home
+
+    </a>
 
     <div *ngFor="let group of docs" class="menu-group">
 
-      <!-- clickable title -->
+      <!-- Collapsible Group Title -->
       <h4 class="group-title" (click)="toggle(group)">
-
         <span [class.rotated]="group.open">▶</span>
         {{ group.title }}
-
       </h4>
 
-
-      <!-- collapsible content -->
+      <!-- Pages -->
       <div *ngIf="group.open">
 
-        <a *ngFor="let page of group.pages" [routerLink]="['/docs', group.section, page.slug]"
-          routerLinkActive="active">
+        <a *ngFor="let page of group.pages" [routerLink]="['/docs', group.section, page.slug]" routerLinkActive="active"
+          (click)="sidebarOpen=false">
+
           {{ page.title }}
+
         </a>
 
       </div>
@@ -29,6 +53,7 @@
 
   </aside>
 
+  <!-- ===== CONTENT AREA ===== -->
   <main class="content">
     <router-outlet></router-outlet>
   </main>
