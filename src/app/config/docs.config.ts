@@ -11,7 +11,7 @@ export const DOCS_CONFIG = [
     title: 'Angular',
     section: 'angular',
     pages: [
-      { title: 'Routing', slug: 'routing' },
+      { title: 'Test', slug: 'Introduction' },
       { title: 'Signals', slug: 'signals' }
     ]
   },
