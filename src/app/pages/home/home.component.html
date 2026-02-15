@@ -1,0 +1,27 @@
+<div class="home">
+
+  <div class="hero">
+    <h1>Knowledge Hub</h1>
+
+    <p class="subtitle">
+      Welcome to <strong>Venkataramanaiah Nagella's</strong> learning space.
+      A structured journey through daily logic, Angular, system design,
+      and software engineering knowledge.
+    </p>
+  </div>
+
+  <div class="cards">
+
+    <a
+      class="card"
+      *ngFor="let group of docs"
+      [routerLink]="['/docs', group.section, group.pages[0].slug]">
+
+      <h3>{{ group.title }}</h3>
+      <p>{{ group.pages.length }} topics available</p>
+
+    </a>
+
+  </div>
+
+</div>

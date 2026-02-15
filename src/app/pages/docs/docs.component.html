@@ -1,12 +1,26 @@
-<div class="docs-container">
+<div class="docs-layout">
 
-  <markdown
-    *ngIf="!notFound"
-    [src]="mdPath">
-  </markdown>
+  <!-- MAIN CONTENT -->
+  <div class="docs-container">
 
-  <div *ngIf="notFound">
-    <h2>Page Not Found</h2>
+    <markdown *ngIf="!notFound" [src]="mdPath" (ready)="generateTOC()">
+    </markdown>
+
+    <div *ngIf="notFound">
+      <h2>Page Not Found</h2>
+    </div>
+
   </div>
+
+  <!-- RIGHT TOC -->
+  <aside class="toc" *ngIf="toc.length">
+
+    <h4>On this page</h4>
+
+    <a *ngFor="let item of toc" (click)="scrollTo(item.id)" [class.active]="activeSection === item.id">
+      {{ item.text }}
+    </a>
+
+  </aside>
 
 </div>

@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
 import { DocsComponent } from './pages/docs/docs.component';
+import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'docs/daily-logic/day01-char-frequency', pathMatch: 'full' },
+  { path: '', component: HomeComponent },   // ⭐ NEW default page
   { path: 'docs/:section/:page', component: DocsComponent },
-  { path: '**', redirectTo: 'docs/daily-logic/day01-char-frequency' }
+  { path: '**', redirectTo: '' }            // ⭐ fallback to home
 ];

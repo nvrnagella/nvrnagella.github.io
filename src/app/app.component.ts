@@ -11,5 +11,13 @@ import { DOCS_CONFIG } from './config/docs.config';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  docs = DOCS_CONFIG;
+   // add open state to every group
+  docs = DOCS_CONFIG.map(group => ({
+    ...group,
+    open: true   // default expanded
+  }));
+
+  toggle(group: any) {
+    group.open = !group.open;
+  }
 }

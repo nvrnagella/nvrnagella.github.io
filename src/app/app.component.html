@@ -6,14 +6,24 @@
 
     <div *ngFor="let group of docs" class="menu-group">
 
-      <h4>{{ group.title }}</h4>
+      <!-- clickable title -->
+      <h4 class="group-title" (click)="toggle(group)">
 
-      <a
-        *ngFor="let page of group.pages"
-        [routerLink]="['/docs', group.section, page.slug]"
-        routerLinkActive="active">
-        {{ page.title }}
-      </a>
+        <span [class.rotated]="group.open">▶</span>
+        {{ group.title }}
+
+      </h4>
+
+
+      <!-- collapsible content -->
+      <div *ngIf="group.open">
+
+        <a *ngFor="let page of group.pages" [routerLink]="['/docs', group.section, page.slug]"
+          routerLinkActive="active">
+          {{ page.title }}
+        </a>
+
+      </div>
 
     </div>
 
