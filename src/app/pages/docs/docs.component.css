@@ -4,6 +4,15 @@
   display: block;
 }
 
+/* ===== MARKDOWN WIDTH SAFETY ===== */
+.docs-container,
+.docs-container markdown {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
 .docs-container {
   max-width: 1000px;
   /* wider reading area */
@@ -64,6 +73,7 @@
 .docs-container a {
   color: #60a5fa;
   text-decoration: none;
+  word-break: break-word;
 }
 
 .docs-container a:hover {
@@ -80,11 +90,13 @@
   border: 1px solid #1e293b;
   margin: 20px 0;
   max-width: 100%;
+  white-space: pre;
 }
 
 .docs-container code {
   color: #38bdf8;
   font-size: 16px;
+  word-break: break-word;
 }
 
 /* inline code */
@@ -106,6 +118,8 @@
 /* ===== Tables ===== */
 
 .docs-container table {
+  display: block;
+  overflow-x: auto;
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
@@ -120,6 +134,13 @@
 .docs-container th {
   background: #020617;
 }
+
+/* prevent any markdown element breaking layout */
+.docs-container * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 
 /* ===== Smooth Page Appearance ===== */
 
@@ -196,4 +217,17 @@
     font-size: 17px;
     padding: 0 6px;
   }
+}
+
+@media (max-width: 900px) {
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .docs-container {
+    padding: 0 8px;
+  }
+
 }
