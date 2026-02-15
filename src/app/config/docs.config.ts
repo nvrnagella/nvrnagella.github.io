@@ -16,8 +16,8 @@ export const DOCS_CONFIG = [
     ]
   },
   {
-    title: 'Guides',
-    section: 'daily-logic',
+    title: 'GitHub',
+    section: 'github',
     pages: [
       { title: 'GitHub Pages Deploy', slug: 'Angular18GitHubPagesDeploymentGuide' }
     ]
