@@ -21,5 +21,12 @@ export const DOCS_CONFIG = [
     pages: [
       { title: 'GitHub Pages Deploy', slug: 'Angular18GitHubPagesDeploymentGuide' }
     ]
+  },
+  {
+    title: 'Sql',
+    section: 'SQL',
+    pages: [
+      { title: 'SqlQueryMasterDocument', slug: 'SqlQueryMasterDocument' }
+    ]
   }
 ];
