@@ -23,10 +23,10 @@ export const DOCS_CONFIG = [
     ]
   },
   {
-    title: 'Sql',
-    section: 'SQL',
+    title: 'sQL',
+    section: 'Sql',
     pages: [
-      { title: 'SqlQueryMasterDocument', slug: 'SqlQueryMasterDocument' }
+      { title: 'Sql Query Master Document', slug: 'SqlQueryMasterDocument' }
     ]
   }
 ];
