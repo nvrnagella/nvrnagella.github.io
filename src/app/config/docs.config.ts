@@ -23,10 +23,18 @@ export const DOCS_CONFIG = [
     ]
   },
   {
-    title: 'sQL',
+    title: 'SQL',
     section: 'Sql',
     pages: [
       { title: 'Sql Query Master Document', slug: 'SqlQueryMasterDocument' }
+    ]
+  }
+  ,
+  {
+    title: 'MCP',
+    section: 'MCP',
+    pages: [
+      { title: 'Setup & Run MCP server', slug: 'run-mcp-server' }
     ]
   }
 ];
