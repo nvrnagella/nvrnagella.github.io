@@ -4,7 +4,8 @@ export const DOCS_CONFIG = [
     section: 'daily-logic',
     pages: [
       { title: 'Char Frequency', slug: 'day01-char-frequency' },
-      { title: 'BasicObjectCreation(LongWay)', slug: 'Question1' }
+      { title: 'BasicObjectCreation(LongWay)', slug: 'Question1' },
+      { title: 'Number Reversal', slug: 'Number Reversal' }
     ]
   },
   {
