@@ -20,7 +20,8 @@ export const DOCS_CONFIG = [
     title: 'GitHub',
     section: 'github',
     pages: [
-      { title: 'GitHub Pages Deploy', slug: 'Angular18GitHubPagesDeploymentGuide' }
+      { title: 'GitHub Pages Deploy', slug: 'Angular18GitHubPagesDeploymentGuide' },
+      { title: 'RebaseMergeFetchPullVS22Workflow', slug: 'RebaseMergeFetchPullVisualStudio2022Workflow'}
     ]
   },
   {
