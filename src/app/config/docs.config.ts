@@ -39,4 +39,13 @@ export const DOCS_CONFIG = [
       { title: 'Setup & Run MCP server', slug: 'run-mcp-server' }
     ]
   }
+   ,
+  {
+    title: '.NET C#',
+    section: 'EFTrackingAndAsNoTracking',
+    pages: [
+      { title: '.NET Architecture', slug: '.netArchitecture' },
+      { title: 'EFTrackingAndAsNoTracking', slug: 'EFTrackingAndAsNoTracking' }
+    ]
+  }
 ];
