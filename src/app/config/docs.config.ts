@@ -48,4 +48,12 @@ export const DOCS_CONFIG = [
       { title: 'EFTrackingAndAsNoTracking', slug: 'EFTrackingAndAsNoTracking' }
     ]
   }
+   ,
+  {
+    title: 'Initial Screening',
+    section: 'InitialScreening',
+    pages: [
+      { title: 'SeniorBackendEngineer(Python+AWS)', slug: 'SeniorBackendEngineer(Python+AWS)' }
+    ]
+  }
 ];
