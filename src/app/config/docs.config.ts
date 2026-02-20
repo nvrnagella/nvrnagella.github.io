@@ -41,10 +41,10 @@ export const DOCS_CONFIG = [
   }
    ,
   {
-    title: '.NET C#',
-    section: 'C#',
+    title: 'Dot NET C#',
+    section: 'C-Sharp',
     pages: [
-      { title: '.NET Architecture', slug: '.netArchitecture' },
+      { title: '.NET Architecture', slug: 'DotNetArchitecture' },
       { title: 'EFTrackingAndAsNoTracking', slug: 'EFTrackingAndAsNoTracking' }
     ]
   }
