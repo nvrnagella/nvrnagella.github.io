@@ -42,7 +42,7 @@ export const DOCS_CONFIG = [
    ,
   {
     title: '.NET C#',
-    section: 'EFTrackingAndAsNoTracking',
+    section: 'C#',
     pages: [
       { title: '.NET Architecture', slug: '.netArchitecture' },
       { title: 'EFTrackingAndAsNoTracking', slug: 'EFTrackingAndAsNoTracking' }
