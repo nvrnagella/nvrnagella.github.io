@@ -14,7 +14,7 @@ export class AppComponent {
 
   docs = DOCS_CONFIG.map(group => ({
     ...group,
-    open: true
+    open: false
   }));
 
   // ===== Sidebar State =====

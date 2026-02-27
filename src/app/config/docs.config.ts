@@ -56,4 +56,12 @@ export const DOCS_CONFIG = [
       { title: 'SeniorBackendEngineer(Python+AWS)', slug: 'SeniorBackendEngineer(Python+AWS)' }
     ]
   }
+  ,
+  {
+    title: 'WebAPI',
+    section: 'Web-Api',
+    pages: [
+      { title: 'Web API Basics (.NET Series)', slug: 'WebAPIBasics' }
+    ]
+  }
 ];
