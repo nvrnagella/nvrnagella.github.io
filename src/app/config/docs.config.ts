@@ -45,7 +45,8 @@ export const DOCS_CONFIG = [
     section: 'C-Sharp',
     pages: [
       { title: '.NET Architecture', slug: 'DotNetArchitecture' },
-      { title: 'EFTrackingAndAsNoTracking', slug: 'EFTrackingAndAsNoTracking' }
+      { title: 'EFTrackingAndAsNoTracking', slug: 'EFTrackingAndAsNoTracking' },
+      {title: 'Tuple Deconstruction', slug: 'TupleDeconstruction'}
     ]
   }
    ,
@@ -53,7 +54,9 @@ export const DOCS_CONFIG = [
     title: 'Initial Screening',
     section: 'InitialScreening',
     pages: [
-      { title: 'SeniorBackendEngineer(Python+AWS)', slug: 'SeniorBackendEngineer(Python+AWS)' }
+      { title: 'SeniorBackendEngineer(Python+AWS)', slug: 'SeniorBackendEngineer(Python+AWS)' },
+      { title: 'fullStackBngDotNet', slug: 'fullStackBngDotNet' },
+      { title: 'ManualTesterExInHouse', slug: 'ManualTesterExInHouse' }
     ]
   }
   ,
