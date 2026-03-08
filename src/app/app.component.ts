@@ -18,7 +18,21 @@ export class AppComponent {
   }));
 
   // ===== Sidebar State =====
-  sidebarOpen = false;
+  sidebarOpen = window.innerWidth > 900;
+
+  isDesktop = window.innerWidth > 900;
+
+  ngOnInit() {
+    window.addEventListener('resize', () => {
+
+      this.isDesktop = window.innerWidth > 900;
+
+      if (this.isDesktop) {
+        this.sidebarOpen = true;
+      }
+
+    });
+  }
 
   toggle(group: any) {
     group.open = !group.open;

@@ -1,24 +1,63 @@
+@media print {
+
+  /* remove viewport restrictions */
+  .layout,
+  .sidebar,
+  .content {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* hide navigation UI when printing */
+  .sidebar,
+  .mobile-header,
+  .collapse-btn,
+  .backdrop {
+    display: none !important;
+  }
+
+  /* make content full width */
+  .content {
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+}
+
+
 .layout {
   display: flex;
   height: 100vh;
+  overflow: hidden;
 }
 
 /* ===== SIDEBAR ===== */
 
 .sidebar {
   width: 270px;
+  height: 100vh;
   background: linear-gradient(180deg, #020617, #0f172a);
   padding: 20px;
   overflow-y: auto;
   border-right: 1px solid #1e293b;
   z-index: 1000;
-  /* ⭐ ADD THIS */
+
+  transition: transform 0.25s ease;
+}
+
+/* Hide sidebar when collapsed */
+.sidebar:not(.open) {
+  transform: translateX(-100%);
 }
 
 .logo {
-  margin: 0 0 20px 0;
+  margin: 0 0 20px 40px;
   font-size: 20px;
   color: #38bdf8;
+}
+
+.logo {
+  cursor: pointer;
 }
 
 .menu-group h4 {
@@ -51,6 +90,7 @@
 
 .content {
   flex: 1;
+  height: 100vh;
   overflow-y: auto;
   padding: 40px;
 }
@@ -106,16 +146,18 @@
 
   .sidebar {
     position: fixed;
-    left: -280px;
     top: 56px;
+    width: 270px;
     height: calc(100vh - 56px);
     z-index: 1000;
-    transition: left 0.25s ease;
-    will-change: left;
+
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    will-change: transform;
   }
 
   .sidebar.open {
-    left: 0;
+    transform: translateX(0);
   }
 
   .content {
@@ -156,4 +198,35 @@
 
 body.menu-open {
   overflow: hidden;
+}
+
+
+/* ===== DESKTOP COLLAPSE BUTTON ===== */
+
+.collapse-btn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 1200;
+
+  background: #020617;
+  border: 1px solid #1e293b;
+  color: white;
+
+  font-size: 20px;
+  padding: 6px 10px;
+  border-radius: 6px;
+
+  cursor: pointer;
+}
+
+.collapse-btn:hover {
+  background: #0f172a;
+}
+
+/* Hide button on mobile (since mobile header already has one) */
+@media (max-width: 900px) {
+  .collapse-btn {
+    display: none;
+  }
 }

@@ -3,7 +3,7 @@
   <!-- MAIN CONTENT -->
   <div class="docs-container">
 
-    <markdown *ngIf="!notFound" [src]="mdPath" (ready)="generateTOC()">
+    <markdown *ngIf="!notFound" [src]="mdPath">
     </markdown>
 
     <div *ngIf="notFound">
@@ -11,16 +11,5 @@
     </div>
 
   </div>
-
-  <!-- RIGHT TOC -->
-  <aside class="toc" *ngIf="toc.length">
-
-    <h4>On this page</h4>
-
-    <a *ngFor="let item of toc" (click)="scrollTo(item.id)" [class.active]="activeSection === item.id">
-      {{ item.text }}
-    </a>
-
-  </aside>
 
 </div>

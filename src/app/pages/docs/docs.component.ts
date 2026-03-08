@@ -11,14 +11,15 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './docs.component.html',
   styleUrls: ['./docs.component.css']
 })
-
 export class DocsComponent implements OnInit {
 
   mdPath = '';
   notFound = false;
-  activeSection = '';
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient
+  ) {}
 
   ngOnInit() {
 
@@ -29,12 +30,11 @@ export class DocsComponent implements OnInit {
 
       const path = `/docs/${section}/${page}.md`;
 
-      // reset state first
+      // reset state
       this.notFound = false;
       this.mdPath = '';
-      this.toc = [];
 
-      // check file existence
+      // check if markdown file exists
       this.http.get(path, { responseType: 'text' }).subscribe({
 
         next: () => {
@@ -49,75 +49,14 @@ export class DocsComponent implements OnInit {
 
       });
 
-      // always scroll to top
-      window.scrollTo({ top: 0, behavior: 'instant' });
-
-    });
-  }
-
-
-
-
-  toc: { id: string; text: string }[] = [];
-
-  generateTOC() {
-
-    this.toc = [];
-
-    setTimeout(() => {
-
-      const headings =
-        document.querySelectorAll('.docs-container h2, .docs-container h3');
-
-      headings.forEach((el: any, index) => {
-
-        const id = 'section-' + index;
-        el.id = id;
-
-        this.toc.push({
-          id,
-          text: el.innerText
-        });
-
+      // scroll to top
+      window.scrollTo({
+        top: 0,
+        behavior: 'instant'
       });
 
-      // ⭐ start scroll spy AFTER headings exist
-      this.setupScrollSpy();
-
     });
+
   }
-
-
-  scrollTo(id: string) {
-    document.getElementById(id)?.scrollIntoView({
-      behavior: 'smooth'
-    });
-  }
-
-  setupScrollSpy() {
-
-    const headings = Array.from(
-      document.querySelectorAll('.docs-container h2, .docs-container h3')
-    ) as HTMLElement[];
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            this.activeSection = entry.target.id;
-          }
-        });
-
-      },
-      {
-        rootMargin: '-40% 0px -55% 0px',
-        threshold: 0
-      }
-    );
-
-    headings.forEach(h => observer.observe(h));
-  }
-
 
 }

@@ -5,7 +5,7 @@
 </header>
 
 <!-- ===== BACKDROP OVERLAY ===== -->
-<div class="backdrop" *ngIf="sidebarOpen" (click)="toggleSidebar()">
+<div class="backdrop" *ngIf="sidebarOpen && !isDesktop" (click)="toggleSidebar()">
 </div>
 
 <!-- ===== MAIN LAYOUT ===== -->
@@ -53,9 +53,16 @@
 
   </aside>
 
-  <!-- ===== CONTENT AREA ===== -->
-  <main class="content">
-    <router-outlet></router-outlet>
-  </main>
+ <!-- ===== CONTENT AREA ===== -->
+<main class="content">
+
+  <!-- Desktop collapse button -->
+  <button class="collapse-btn" (click)="toggleSidebar()">
+    ☰
+  </button>
+
+  <router-outlet></router-outlet>
+
+</main>
 
 </div>
