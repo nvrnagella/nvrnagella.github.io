@@ -1,12 +1,27 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+
+import {
+  RouterLink,
+  RouterLinkActive,
+  RouterOutlet,
+  Router
+} from '@angular/router';
+
 import { CommonModule } from '@angular/common';
+
 import { DOCS_CONFIG } from './config/docs.config';
+
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, CommonModule],
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    CommonModule
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -18,11 +33,18 @@ export class AppComponent {
   }));
 
   // ===== Sidebar State =====
+
   sidebarOpen = window.innerWidth > 900;
 
   isDesktop = window.innerWidth > 900;
 
+  constructor(
+    public auth: AuthService,
+    private router: Router
+  ) {}
+
   ngOnInit() {
+
     window.addEventListener('resize', () => {
 
       this.isDesktop = window.innerWidth > 900;
@@ -32,50 +54,88 @@ export class AppComponent {
       }
 
     });
+
   }
+
+  // ===== Logout =====
+
+  logout() {
+
+    this.auth.logout();
+
+    this.router.navigate(['/login']);
+
+  }
+
+  // ===== Group Toggle =====
 
   toggle(group: any) {
+
     group.open = !group.open;
+
   }
 
+  // ===== Sidebar Toggle =====
+
   toggleSidebar() {
+
     this.sidebarOpen = !this.sidebarOpen;
 
     document.body.classList.toggle(
       'menu-open',
       this.sidebarOpen
     );
+
   }
 
-
   // ===== Swipe Gesture Support =====
+
   touchStartX = 0;
+
   touchEndX = 0;
 
   onTouchStart(event: TouchEvent) {
-    this.touchStartX = event.touches[0].clientX;
+
+    this.touchStartX =
+      event.touches[0].clientX;
+
   }
 
   onTouchMove(event: TouchEvent) {
-    this.touchEndX = event.touches[0].clientX;
+
+    this.touchEndX =
+      event.touches[0].clientX;
+
   }
 
   onTouchEnd() {
 
-    const swipeDistance = this.touchEndX - this.touchStartX;
+    const swipeDistance =
+      this.touchEndX - this.touchStartX;
 
-    // ✅ OPEN sidebar (swipe right from edge)
+    // ===== OPEN SIDEBAR =====
+
     if (
       window.innerWidth <= 900 &&
       this.touchStartX < 40 &&
       swipeDistance > 80
     ) {
+
       this.sidebarOpen = true;
+
     }
 
-    // ✅ CLOSE sidebar (swipe left)
-    if (this.sidebarOpen && swipeDistance < -80) {
+    // ===== CLOSE SIDEBAR =====
+
+    if (
+      this.sidebarOpen &&
+      swipeDistance < -80
+    ) {
+
       this.sidebarOpen = false;
+
     }
+
   }
+
 }

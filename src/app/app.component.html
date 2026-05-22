@@ -1,47 +1,119 @@
-<!-- ===== MOBILE HEADER (visible only on small screens) ===== -->
-<header class="mobile-header">
-  <button (click)="toggleSidebar()">☰</button>
-  <span>Knowledge Hub</span>
+<!-- ===== MOBILE HEADER ===== -->
+
+<header
+  class="mobile-header"
+  *ngIf="auth.isLoggedIn()"
+>
+
+  <button (click)="toggleSidebar()">
+    ☰
+  </button>
+
+  <span>
+    Knowledge Hub
+  </span>
+
 </header>
 
-<!-- ===== BACKDROP OVERLAY ===== -->
-<div class="backdrop" *ngIf="sidebarOpen && !isDesktop" (click)="toggleSidebar()">
+<!-- ===== BACKDROP ===== -->
+
+<div
+  class="backdrop"
+  *ngIf="sidebarOpen && !isDesktop && auth.isLoggedIn()"
+  (click)="toggleSidebar()"
+>
 </div>
 
 <!-- ===== MAIN LAYOUT ===== -->
-<div class="layout" (touchstart)="onTouchStart($event)" (touchmove)="onTouchMove($event)" (touchend)="onTouchEnd()">
+
+<div
+  class="layout"
+  *ngIf="auth.isLoggedIn(); else loginView"
+  (touchstart)="onTouchStart($event)"
+  (touchmove)="onTouchMove($event)"
+  (touchend)="onTouchEnd()"
+>
 
   <!-- ===== SIDEBAR ===== -->
-  <aside class="sidebar" [class.open]="sidebarOpen">
 
-    <h3 class="logo" routerLink="/" (click)="sidebarOpen=false">
+  <aside
+    class="sidebar"
+    [class.open]="sidebarOpen"
+  >
+
+    <!-- ===== LOGO ===== -->
+
+    <h3
+      class="logo"
+      routerLink="/"
+      (click)="sidebarOpen=false"
+    >
 
       Learning Docs
 
     </h3>
 
+    <!-- ===== HOME ===== -->
 
-    <!-- ===== HOME LINK ===== -->
-    <a class="home-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-      (click)="sidebarOpen=false">
+    <a
+      class="home-link"
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="sidebarOpen=false"
+    >
 
       🏠 Home
 
     </a>
 
-    <div *ngFor="let group of docs" class="menu-group">
+    <!-- ===== LOGOUT ===== -->
 
-      <!-- Collapsible Group Title -->
-      <h4 class="group-title" (click)="toggle(group)">
-        <span [class.rotated]="group.open">▶</span>
+    <button
+      class="logout-btn"
+      (click)="logout()"
+    >
+
+      Logout
+
+    </button>
+
+    <!-- ===== MENU GROUPS ===== -->
+
+    <div
+      *ngFor="let group of docs"
+      class="menu-group"
+    >
+
+      <!-- Group Title -->
+
+      <h4
+        class="group-title"
+        (click)="toggle(group)"
+      >
+
+        <span [class.rotated]="group.open">
+          ▶
+        </span>
+
         {{ group.title }}
+
       </h4>
 
       <!-- Pages -->
+
       <div *ngIf="group.open">
 
-        <a *ngFor="let page of group.pages" [routerLink]="['/docs', group.section, page.slug]" routerLinkActive="active"
-          (click)="sidebarOpen=false">
+        <a
+          *ngFor="let page of group.pages"
+          [routerLink]="[
+            '/docs',
+            group.section,
+            page.slug
+          ]"
+          routerLinkActive="active"
+          (click)="sidebarOpen=false"
+        >
 
           {{ page.title }}
 
@@ -53,16 +125,33 @@
 
   </aside>
 
- <!-- ===== CONTENT AREA ===== -->
-<main class="content">
+  <!-- ===== CONTENT ===== -->
 
-  <!-- Desktop collapse button -->
-  <button class="collapse-btn" (click)="toggleSidebar()">
-    ☰
-  </button>
+  <main class="content">
 
-  <router-outlet></router-outlet>
+    <!-- Desktop Menu Button -->
 
-</main>
+    <button
+      class="collapse-btn"
+      (click)="toggleSidebar()"
+    >
+
+      ☰
+
+    </button>
+
+    <router-outlet>
+    </router-outlet>
+
+  </main>
 
 </div>
+
+<!-- ===== LOGIN VIEW ===== -->
+
+<ng-template #loginView>
+
+  <router-outlet>
+  </router-outlet>
+
+</ng-template>
