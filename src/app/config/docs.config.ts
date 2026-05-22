@@ -13,7 +13,7 @@ export const DOCS_CONFIG = [
     section: 'angular',
     pages: [
       { title: 'Test', slug: 'Introduction' },
-      { title: 'Signals', slug: 'signals' }
+      { title: 'CreateAngularProj', slug: 'CreateAngularProj' }
     ]
   },
   {
@@ -65,6 +65,14 @@ export const DOCS_CONFIG = [
     section: 'Web-Api',
     pages: [
       { title: 'Web API Basics (.NET Series)', slug: 'WebAPIBasics' }
+    ]
+  }
+  ,
+  {
+    title: '3DFactoryVisualization',
+    section: '3DFactoryVisualizationPOC',
+    pages: [
+      { title: '3DFactoryVisualizationPOC', slug: '3DFactoryVisualization' }
     ]
   }
 ];
