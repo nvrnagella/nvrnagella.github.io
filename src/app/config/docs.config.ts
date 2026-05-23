@@ -66,6 +66,13 @@ export const DOCS_CONFIG = [
     pages: [
       { title: 'Web API Basics (.NET Series)', slug: 'WebAPIBasics' }
     ]
+  },
+  {
+    title: 'FireBase',
+    section: 'FireBaseLogin',
+    pages: [
+      { title: 'FireBaseLogin', slug: 'FireBaseLogin' }
+    ]
   }
   ,
   {

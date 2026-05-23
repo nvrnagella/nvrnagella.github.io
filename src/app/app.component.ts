@@ -41,7 +41,7 @@ export class AppComponent {
   constructor(
     public auth: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
 
@@ -59,11 +59,9 @@ export class AppComponent {
 
   // ===== Logout =====
 
-  logout() {
+  async logout() {
 
-    this.auth.logout();
-
-    this.router.navigate(['/login']);
+    await this.auth.logout();
 
   }
 

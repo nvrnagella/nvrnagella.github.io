@@ -1,38 +1,66 @@
 import { Component } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
+
 import { Router } from '@angular/router';
+
 import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule
+  ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
 
-  username = '';
+  email = '';
+
   password = '';
+
   error = '';
+
+  loading = false;
 
   constructor(
     private auth: AuthService,
     private router: Router
   ) {}
 
-  login() {
+  async login() {
 
-    const success = this.auth.login(
-      this.username,
-      this.password
-    );
+    this.error = '';
 
-    if (success) {
+    this.loading = true;
+
+    try {
+
+      await this.auth.login(
+        this.email,
+        this.password
+      );
+
       this.router.navigate(['/']);
-    } else {
-      this.error = 'Invalid username or password';
+
     }
+    catch (err) {
+
+      this.error =
+        'Invalid email or password';
+
+    }
+    finally {
+
+      this.loading = false;
+
+    }
+
   }
+
 }
